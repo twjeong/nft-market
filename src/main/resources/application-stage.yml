@@ -1,0 +1,74 @@
+spring:
+  config:
+    activate:
+      on-profile: stage
+  data:
+    web:
+      pageable:
+        default-page-size: 20
+        one-indexed-parameters: true
+  datasource:
+    url: jdbc:h2:mem:stage;DB_CLOSE_ON_EXIT=FALSE
+    username: dbstage
+    password: dbstagepassword
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  flyway:
+    enabled: false
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: mysql
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: false
+        use_sql_comments: false
+  jackson:
+    date-format: com.fasterxml.jackson.databind.util.StdDateFormat
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+      location:
+
+cloud:
+  aws:
+    credentials:
+      accessKey: AKIARSMJT6KAIKVJPVM6
+      secretKey: 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
+    sqs:
+      mos-eth-factory: https://sqs.ap-northeast-2.amazonaws.com/108199670400/mos-eth-factory-stage.fifo
+      mos-eth-nft: https://sqs.ap-northeast-2.amazonaws.com/108199670400/mos-eth-nft-stage.fifo
+      mos-eth-primary-market: https://sqs.ap-northeast-2.amazonaws.com/108199670400/mos-eth-primary-market-stage.fifo
+      mos-eth-secondary-market: https://sqs.ap-northeast-2.amazonaws.com/108199670400/mos-eth-secondary-market-stage.fifo
+      mos-eth-dead-letter: https://sqs.ap-northeast-2.amazonaws.com/108199670400/mos-eth-dead-letter-stage.fifo
+      mos-notification: https://sqs.ap-northeast-2.amazonaws.com/108199670400/mos-notification-stage.fifo
+    s3:
+      bucket: mos-s3-test
+      image-dir: images/
+      template-dir: template/
+    region:
+      static: ap-northeast-2
+    stack:
+      auto: false
+
+notification:
+  email:
+    supportEmail: support@mosaicsquare.io
+    supportName: Mosaic Square
+  service:
+    pusher:
+      appId: 1429074
+      appKey: 30989f93788e788bef24
+      appSecret: a01891d783f75d370ed2
+      appCluster: ap3
+      eventId: mosaic-square-notification-service
+
+logging:
+  level:
+    org.hibernate.type: TRACE
+    org.springframework: INFO
+    com.zaxxer.hikari.HikariConfig: DEBUG
+    com.zaxxer.hikari: TRACE
+    com.mosaicsquare: INFO
+  config: classpath:log4j2-stage.yml

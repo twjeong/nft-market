@@ -1,0 +1,22 @@
+version: 1.0.0
+
+spring:
+  profiles:
+    default: local
+  jackson:
+    default-property-inclusion: non_null
+    date-format: com.fasterxml.jackson.databind.util.StdDateFormat
+
+server:
+  port: 80
+  ssl:
+    enabled: false
+
+jwt:
+  sign-key: "mosaic-square-service:9c5833cb-0c5c-4cb0-a198-599ea769a51c"
+  member-token:
+    access-token-expiration-ms: 3600000 # 1h
+    refresh-token-expiration-ms: 604800000 # 168h 7d
+  admin-token:
+    access-token-expiration-ms: 604800000 # 20m (1200000). Alpha 버전에서는 임시로 일주일로 설정
+    refresh-token-expiration-ms: 43200000 # 12h

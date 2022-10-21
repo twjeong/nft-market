@@ -1,0 +1,14 @@
+delete from admin;
+delete from email_verification;
+delete from member;
+delete from account;
+delete from creator_type;
+delete from nft;
+delete from sales_info;
+delete from follow;
+delete from collection_creator;
+delete from collection;
+delete from notification_message;
+delete from member;
+delete from nft_like;
+delete from transaction_history;
